@@ -1,14 +1,29 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { services } from "@/config/services";
 
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [selectedService, setSelectedService] = useState("");
+  
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const serviceParam = searchParams.get("service");
+    if (serviceParam) {
+      const serviceExists = services.some((s) => s.id === serviceParam);
+      if (serviceExists) {
+        setSelectedService(serviceParam);
+      }
+    }
+  }, [searchParams]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,12 +76,16 @@ export function ContactForm() {
         <Label htmlFor="service">Service of Interest</Label>
         <select 
           id="service"
+          value={selectedService}
+          onChange={(e) => setSelectedService(e.target.value)}
           className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
         >
           <option value="">Select a service...</option>
-          <option value="interior-design">Interior Design Works</option>
-          <option value="cleaning">Deep Cleaning Services</option>
-          <option value="painting">Painting Works</option>
+          {services.map((service) => (
+            <option key={service.id} value={service.id}>
+              {service.title}
+            </option>
+          ))}
           <option value="other">Other</option>
         </select>
       </div>

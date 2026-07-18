@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { navigationLinks } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
+import { services } from "@/config/services";
 
 export function Footer() {
   return (
@@ -33,18 +34,29 @@ export function Footer() {
           <div>
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li><Link href="/services#interior-design" className="hover:text-primary transition-colors">Interior Design</Link></li>
-              <li><Link href="/services#deep-cleaning" className="hover:text-primary transition-colors">Deep Cleaning</Link></li>
-              <li><Link href="/services#event-management" className="hover:text-primary transition-colors">Event Management</Link></li>
-              <li><Link href="/services#painting" className="hover:text-primary transition-colors">Painting Works</Link></li>
+              {services.map((service) => (
+                <li key={service.id}>
+                  <Link href={`/services#${service.id}`} className="hover:text-primary transition-colors">
+                    {service.title}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
-              <li>{siteConfig.contact.email}</li>
-              <li>{siteConfig.contact.phone}</li>
+              <li>
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-primary transition-colors">
+                  {siteConfig.contact.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-primary transition-colors">
+                  {siteConfig.contact.phone}
+                </a>
+              </li>
               <li className="max-w-[200px]">{siteConfig.contact.address}</li>
             </ul>
           </div>

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import { siteConfig } from "@/config/site";
 import { ContactForm } from "@/components/sections/ContactForm";
 import { Mail, MapPin, Phone } from "lucide-react";
+import { Suspense } from "react";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -72,7 +73,9 @@ export default function ContactPage() {
             {/* Form */}
             <div className="bg-card border border-border rounded-2xl p-6 sm:p-10 shadow-sm">
               <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-              <ContactForm />
+              <Suspense fallback={<div className="h-64 flex items-center justify-center text-muted-foreground animate-pulse">Loading form...</div>}>
+                <ContactForm />
+              </Suspense>
             </div>
           </div>
         </div>

@@ -6,11 +6,11 @@ import { services } from "@/config/services";
 export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
-      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-8 py-12 md:py-16 lg:py-20">
+      <div className="container max-w-screen-2xl mx-auto px-4 sm:px-8 py-10 md:py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-1">
             <Link href="/" className="flex items-center space-x-2 mb-4">
-              <div className="bg-primary text-primary-foreground font-bold p-1 rounded">SK</div>
+              <span className="font-bold text-xl text-primary mr-1">SK</span>
               <span className="font-bold text-xl">{siteConfig.name}</span>
             </Link>
             <p className="text-muted-foreground text-sm max-w-xs">
@@ -23,7 +23,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               {navigationLinks.map((link) => (
                 <li key={link.href}>
-                  <Link href={link.href} className="hover:text-primary transition-colors">
+                  <Link href={link.href} className="hover:text-foreground transition-colors">
                     {link.label}
                   </Link>
                 </li>
@@ -36,7 +36,7 @@ export function Footer() {
             <ul className="space-y-2 text-sm text-muted-foreground">
               {services.map((service) => (
                 <li key={service.id}>
-                  <Link href={`/services#${service.id}`} className="hover:text-primary transition-colors">
+                  <Link href={`/services#${service.id}`} className="hover:text-foreground transition-colors">
                     {service.title}
                   </Link>
                 </li>
@@ -48,12 +48,12 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Contact Us</h3>
             <ul className="space-y-2 text-sm text-muted-foreground">
               <li>
-                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-primary transition-colors">
+                <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-foreground transition-colors">
                   {siteConfig.contact.email}
                 </a>
               </li>
               <li>
-                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-primary transition-colors">
+                <a href={`tel:${siteConfig.contact.phone}`} className="hover:text-foreground transition-colors">
                   {siteConfig.contact.phone}
                 </a>
               </li>

@@ -14,5 +14,6 @@ const nextConfig: NextConfig = {
 export default nextConfig;
 
 if (process.env.NODE_ENV === "development") {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   eval("import('@opennextjs/cloudflare')").then((m: any) => m.initOpenNextCloudflareForDev());
 }

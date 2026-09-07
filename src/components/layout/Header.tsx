@@ -3,6 +3,7 @@ import { navigationLinks } from "@/config/navigation";
 import { siteConfig } from "@/config/site";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 
 export function Header() {
   return (
@@ -11,7 +12,7 @@ export function Header() {
         <div className="flex flex-1 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-2">
-            <div className="bg-primary text-primary-foreground font-bold p-1 rounded">SK</div>
+            <span className="font-bold text-xl text-primary mr-1">SK</span>
             <span className="font-bold hidden sm:inline-block">
               {siteConfig.name}
             </span>
@@ -23,7 +24,7 @@ export function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
               >
                 {link.label}
               </Link>
@@ -31,7 +32,8 @@ export function Header() {
           </nav>
 
           {/* Actions */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
             <Link href="/contact" className="hidden md:block">
               <Button className="bg-cta text-cta-foreground hover:bg-cta/90">Get a Quote</Button>
             </Link>

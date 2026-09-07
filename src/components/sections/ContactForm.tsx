@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -11,19 +11,18 @@ import { services } from "@/config/services";
 export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [selectedService, setSelectedService] = useState("");
-  
   const searchParams = useSearchParams();
-
-  useEffect(() => {
-    const serviceParam = searchParams.get("service");
+  const serviceParam = searchParams.get("service");
+  
+  const [selectedService, setSelectedService] = useState(() => {
     if (serviceParam) {
       const serviceExists = services.some((s) => s.id === serviceParam);
       if (serviceExists) {
-        setSelectedService(serviceParam);
+        return serviceParam;
       }
     }
-  }, [searchParams]);
+    return "";
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -78,7 +77,7 @@ export function ContactForm() {
           id="service"
           value={selectedService}
           onChange={(e) => setSelectedService(e.target.value)}
-          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
+          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-base ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground placeholder:text-muted-foreground/40 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
         >
           <option value="">Select a service...</option>
           {services.map((service) => (

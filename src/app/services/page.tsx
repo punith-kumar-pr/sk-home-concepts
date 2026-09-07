@@ -16,7 +16,7 @@ export default function ServicesPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-8 max-w-screen-2xl">
           <div className="max-w-3xl space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Our Services</h1>
@@ -30,7 +30,7 @@ export default function ServicesPage() {
       {/* Our Promise Section (Writing common characteristics once) */}
       <section className="py-12 bg-background border-b border-border">
         <div className="container mx-auto px-4 sm:px-8 max-w-screen-2xl">
-          <div className="bg-card border border-border rounded-3xl p-8 sm:p-10 shadow-sm">
+          <div className="bg-card border border-transparent rounded-3xl p-8 sm:p-10 shadow-sm">
             <h2 className="text-2xl font-bold text-foreground mb-8 text-center sm:text-left">
               Our Service Standards
             </h2>
@@ -76,14 +76,14 @@ export default function ServicesPage() {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-20 bg-background flex-1">
+      <section className="py-16 md:py-20 bg-background flex-1">
         <div className="container mx-auto px-4 sm:px-8 max-w-screen-2xl">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service) => (
               <div 
                 key={service.id} 
                 id={service.id}
-                className="flex flex-col bg-card border border-border rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-300 scroll-mt-24 group"
+                className="flex flex-col bg-card border border-transparent shadow-sm hover:shadow-md rounded-2xl overflow-hidden transition-all duration-300 scroll-mt-24 group"
               >
                 {/* Image Container */}
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-muted">
@@ -92,7 +92,7 @@ export default function ServicesPage() {
                     alt={service.title}
                     fill
                     sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
                   />
                 </div>
                 

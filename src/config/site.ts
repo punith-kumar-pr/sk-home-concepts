@@ -5,7 +5,7 @@ export const siteConfig = {
   city: "Bengaluru",
   contact: {
     email: "contact@skhomeconcepts.com",
-    phone: "+91 88675 68670",
+    phone: "+91 63649 42001",
     address: "Sarjapura, Bengaluru, Karnataka - 562125",
   }
 };

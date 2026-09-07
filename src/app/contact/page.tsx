@@ -13,7 +13,7 @@ export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Header Section */}
-      <section className="py-20 bg-secondary">
+      <section className="py-16 md:py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-8 max-w-screen-2xl">
           <div className="max-w-3xl space-y-4">
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground">Contact Us</h1>
@@ -25,7 +25,7 @@ export default function ContactPage() {
       </section>
 
       {/* Content Section */}
-      <section className="py-20 bg-background flex-1">
+      <section className="py-16 md:py-20 bg-background flex-1">
         <div className="container mx-auto px-4 sm:px-8 max-w-screen-2xl">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
             {/* Contact Information */}
@@ -39,7 +39,7 @@ export default function ContactPage() {
 
               <div className="space-y-8">
                 <div className="flex items-start space-x-4">
-                  <div className="mt-1 bg-primary/10 p-3 rounded-full text-primary">
+                  <div className="mt-1 text-foreground">
                     <Mail className="h-6 w-6" />
                   </div>
                   <div>
@@ -49,7 +49,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="mt-1 bg-primary/10 p-3 rounded-full text-primary">
+                  <div className="mt-1 text-foreground">
                     <Phone className="h-6 w-6" />
                   </div>
                   <div>
@@ -59,7 +59,7 @@ export default function ContactPage() {
                 </div>
 
                 <div className="flex items-start space-x-4">
-                  <div className="mt-1 bg-primary/10 p-3 rounded-full text-primary">
+                  <div className="mt-1 text-foreground">
                     <MapPin className="h-6 w-6" />
                   </div>
                   <div>
@@ -71,7 +71,7 @@ export default function ContactPage() {
             </div>
 
             {/* Form */}
-            <div className="bg-card border border-border rounded-2xl p-6 sm:p-10 shadow-sm">
+            <div className="bg-card border border-transparent shadow-sm hover:shadow-md rounded-2xl p-6 sm:p-10 transition-shadow duration-300">
               <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
               <Suspense fallback={<div className="h-64 flex items-center justify-center text-muted-foreground animate-pulse">Loading form...</div>}>
                 <ContactForm />
